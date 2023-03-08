@@ -1,36 +1,54 @@
 package com.wclark7.EldieApi.storage;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
-import com.wclark7.EldieApi.models.HelpRequest;
+import org.springframework.stereotype.Component;
 
+import com.wclark7.EldieApi.models.HelpRequest;
+import com.wclark7.EldieApi.repositories.HelpRequestRepository;
+
+@Component
 public class HelpRequestStorage {
 
-	private List<HelpRequest> helpRequests = new ArrayList<>();
-	private Long nextId = 1L;
+	private HelpRequestRepository helpRequestRepository;
 
-	public HelpRequest findById(Long id) {
-		return helpRequests.stream().filter(helpRequest -> helpRequest.getId().equals(id)).findFirst().orElse(null);
+	public HelpRequestStorage(HelpRequestRepository helpRequestRepository) {
+		this.helpRequestRepository = helpRequestRepository;
 	}
 
-	public List<HelpRequest> findAll() {
-		return helpRequests;
+	public HelpRequest createHelpRequest(String requesterName, String helpType) {
+		Long id = getNextId();
+		LocalDateTime requestedDateTime = LocalDateTime.now();
+		HelpRequest helpRequest = new HelpRequest(id, requesterName, requestedDateTime, helpType);
+		helpRequestRepository.save(helpRequest);
+		return helpRequest;
 	}
 
-	public void save(HelpRequest helpRequest) {
-		helpRequest.setId(nextId++);
-		helpRequests.add(helpRequest);
+	public List<HelpRequest> getAllHelpRequests() {
+		return helpRequestRepository.findAll();
 	}
 
-	public void update(HelpRequest helpRequest) {
-		int index = helpRequests.indexOf(helpRequest);
-		if (index != -1) {
-			helpRequests.set(index, helpRequest);
+	public HelpRequest getHelpRequestById(Long id) {
+		return helpRequestRepository.findById(id);
+	}
+
+	public void markHelpRequestFulfilled(Long id) {
+		HelpRequest helpRequest = helpRequestRepository.findById(id);
+		if (helpRequest != null) {
+			helpRequest.setFulfilledDateTime(LocalDateTime.now());
 		}
 	}
 
-	public void delete(HelpRequest helpRequest) {
-		helpRequests.remove(helpRequest);
+	private Long getNextId() {
+		List<HelpRequest> helpRequests = helpRequestRepository.findAll();
+		Long maxId = 0L;
+		for (HelpRequest helpRequest : helpRequests) {
+			if (helpRequest.getId() > maxId) {
+				maxId = helpRequest.getId();
+			}
+		}
+		return maxId + 1;
 	}
+
 }
