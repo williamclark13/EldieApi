@@ -14,7 +14,7 @@ import com.wclark7.EldieApi.models.HelpRequest;
 import com.wclark7.EldieApi.storage.HelpRequestStorage;
 
 @RestController
-@RequestMapping("/api/v1/help")
+@RequestMapping("/api/help")
 class HelpRequestController {
 	private HelpRequestStorage helpRequestStorage;
 

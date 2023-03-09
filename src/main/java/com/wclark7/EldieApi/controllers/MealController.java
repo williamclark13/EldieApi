@@ -12,7 +12,7 @@ import com.wclark7.EldieApi.services.MealService;
 import com.wclark7.EldieApi.storage.MealStorage;
 
 @RestController
-@RequestMapping(path = "/api/v1/meal")
+@RequestMapping(path = "/api/meal")
 public class MealController {
 	private MealService mealService;
 
