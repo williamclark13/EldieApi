@@ -1,0 +1,4 @@
+Code is in the same order as the commands
+		-Write code so that if port is in use kill that process on the port and run again on same port.
+		-Write code in java for rest api that implements repository, service, and storage for help request without using interfaces.
+		-Write code to create associated mealrepository, mealstorage, and mealservice classes without using interfaces.
