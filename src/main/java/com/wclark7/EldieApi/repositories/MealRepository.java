@@ -2,9 +2,12 @@ package com.wclark7.EldieApi.repositories;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.wclark7.EldieApi.models.Meal;
 import com.wclark7.EldieApi.storage.MealStorage;
 
+@Repository
 public class MealRepository {
 	private MealStorage mealStorage;
 

@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.wclark7.EldieApi.models.HelpRequest;
 
 /**
  * A HelpRequestRepository manages the storage and retrieval of HelpRequest
  * objects.
  */
+@Repository
 public class HelpRequestRepository {
 	private List<HelpRequest> helpRequests = new ArrayList<>();
 
