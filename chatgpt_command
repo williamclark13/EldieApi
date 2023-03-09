@@ -1,4 +1,7 @@
 Code is in the same order as the commands
-		-Write code so that if port is in use kill that process on the port and run again on same port.
-		-Write code in java for rest api that implements repository, service, and storage for help request without using interfaces.
-		-Write code to create associated mealrepository, mealstorage, and mealservice classes without using interfaces.
+	-Write code so that if port is in use kill that process on the port and run again on same port.
+	-Write code in java for rest api that implements repository, service, and storage for help request without using interfaces.
+	-Write code to create associated mealrepository, mealstorage, and mealservice classes without using interfaces.
+	-add necessary error handling, javadocs, and code for edlieapiapp class
+	-add necessary error handling, javadocs, and code for code associated with helprequest/helprequestcontroller/helprequestservice/helprequestrepository/helprequeststorage
+	-add necessary error handling, javadocs, and code for code associated with meal/mealcontroller/mealservice/mealrepository/mealstorage
